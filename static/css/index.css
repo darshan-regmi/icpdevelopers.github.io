@@ -11,8 +11,9 @@
         h1 {
             color: #356;
             font-weight: 100;
-            font-size: 40px;
+            font-size: clamp(24px, 5vw, 40px);
             margin: 40px 0px 20px;
+            padding: 0 10px;
         }
 
         #landingCountdown {
@@ -20,16 +21,23 @@
             color: #374a6f;
             display: inline-block;
             text-align: center;
-            font-size: 30px;
+            font-size: clamp(20px, 4vw, 30px);
             margin: 0 5px 5px;
+            width: 100%;
+            max-width: 600px;
+            padding: 0 10px;
+            box-sizing: border-box;
         }
 
         #landingCountdown > div {
-            padding: 30px;
+            padding: clamp(15px, 3vw, 30px);
             border-radius: 3px;
             background: rgb(249,164,135);
             display: inline-block;
             margin: 5px;
+            width: calc(25% - 10px);
+            min-width: 60px;
+            box-sizing: border-box;
         }
 
         #landingCountdown div > span {
@@ -67,6 +75,7 @@
             background: white;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 90%;
         }
 
         .event-container h2 {
@@ -77,8 +86,9 @@
         .event-countdown {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: clamp(8px, 2vw, 15px);
             margin: 20px 0;
+            flex-wrap: wrap;
         }
 
         .event-countdown div {
@@ -133,12 +143,14 @@
             letter-spacing: 0.5px;
             position: relative;
             line-height: 1.4em;
-            font-size: 1.03em;
-            padding: 50px;
+            font-size: clamp(14px, 2vw, 1.03em);
+            padding: 20px;
             list-style: none;
             text-align: left;
             font-weight: 100;
-            max-width: 30%;
+            width: 90%;
+            max-width: 600px;
+            box-sizing: border-box;
         }
 
         .timeline h1, .timeline h2, .timeline h3 {
@@ -188,6 +200,45 @@
             top: 5px;
         }
         /* applynow button stylesheet */
+        @media (max-width: 768px) {
+            .timeline .event:before {
+                left: -150px;
+                font-size: 0.8em;
+            }
+            
+            .timeline .event:after {
+                left: -45px;
+            }
+            
+            .event-countdown div {
+                min-width: calc(50% - 20px);
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .timeline .event:before {
+                position: relative;
+                left: 0;
+                top: -10px;
+                text-align: left;
+                display: block;
+            }
+            
+            .timeline .event:after {
+                display: none;
+            }
+            
+            #landingCountdown > div {
+                width: calc(50% - 10px);
+                margin-bottom: 10px;
+            }
+            
+            .smalltext {
+                font-size: 14px;
+            }
+        }
+
         .applyNowButton {
         display: inline-block;
         margin: 20px 0;
@@ -360,5 +411,9 @@
 
             .navbar-container {
             flex-wrap: wrap;
+            }
+
+            .event{
+                margin-left: auto;
             }
         }
